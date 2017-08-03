@@ -72,17 +72,16 @@ var getMeSpotify = function(songName) {
 
 //
 getmeMovie = function(movieName) { 
-    
-    queryURL = 'http://www.omdbapi.com/?t=' + movieName + '&tomatoes=true&r=json';
+
+    queryURL = 'http://www.omdbapi.com/?t=' + movieName + '&apikey=40e9cece&tomatoes=true&r=json';
     request(queryURL, function(err, response, body) {
-        if (!error && response.statusCode == 200) {
+        if (!err && response.statusCode == 200) {
           var jsonData = JSON.parse(body);
   
 
           console.log('Title: ' + jsonData.Title);
           console.log('Year: ' + jsonData.Year);
           console.log('Rated: ' + jsonData.Rated);
-          console.log('Title: ' + jsonData.Title);
           console.log('Country: ' + jsonData.Country);
           console.log('Language: ' + jsonData.Language);
           console.log('Plot: ' + jsonData.Plot);
@@ -103,6 +102,7 @@ var pick = function(caseData, functionData) {
             break;
         case 'movie-this':
            getmeMovie(functionData);
+           break;
         default:
             console.log('LIRI does not know that');
 
